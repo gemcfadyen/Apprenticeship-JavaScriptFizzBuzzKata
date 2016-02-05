@@ -1,12 +1,12 @@
 describe("FizzBuzz", function() {
   var FizzBuzz = require("../../lib/jasmine_examples/fizzbuzz");
+  var fizzBuzz;
+
+  beforeAll(function() {
+    fizzBuzz = new FizzBuzz();
+  });
 
   describe("rules", function() {
-    var fizzBuzz;
-
-    beforeAll(function() {
-      fizzBuzz = new FizzBuzz();
-    });
 
      it("knows 3 is divisible by 3", function() {
        expect(fizzBuzz.numberIsDivisibleByThree(3)).toBeTruthy();
@@ -31,5 +31,23 @@ describe("FizzBuzz", function() {
      it("knows 14 is not divisible by 15", function() {
        expect(fizzBuzz.numberIsDivisibleByFifteen(14)).toBeFalsy();
      });
+  });
+
+  describe("playing the game", function() {
+    it("returns the number", function() {
+      expect(fizzBuzz.play(1)).toEqual(1);
+    });
+
+    it("returns Fizz when the number divides by 3", function() {
+      expect(fizzBuzz.play(3)).toEqual("Fizz");
+    });
+
+    it("returns Buzz when the number divides by 5", function() {
+      expect(fizzBuzz.play(5)).toEqual("Buzz");
+    });
+
+    it("returns FizzBuzz when the number divides by 15", function() {
+      expect(fizzBuzz.play(15)).toEqual("FizzBuzz");
+    });
   });
 });
